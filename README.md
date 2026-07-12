@@ -84,7 +84,7 @@ LongFast = BW 250kHz, SF11, CR 4/5):
 | Região | Faixa | Frequência do canal "LongFast" |
 |---|---|---|
 | BR_902 (Brasil) | 902.0–907.5 MHz | 903.875 MHz |
-| ANZ (Austrália/NZ) | 915.0–928.0 MHz | 919.875 MHz |
+| ANZ (Austrália/NZ) | 915.0–928.0 MHz | 919.875 MHz Default |
 
 Se o seu canal tiver nome customizado (não o padrão "LongFast"), a frequência muda.
 
