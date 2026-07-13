@@ -42,6 +42,12 @@
 #define PIN_LORA_BUSY  PA2
 #define PIN_LORA_RXEN  PA1
 #define PIN_LORA_TXEN  PA0
+// LED onboard da Blue Pill (o LED verde que ja vem na placa). Ativo em LOW
+// (LOW = aceso). Se sua placa tiver o LED em outro pino, ajuste aqui.
+// LED onboard da placa (confirmado por teste fisico com led_test.cpp).
+// Polaridade ainda nao confirmada -- se o LED ficar aceso em repouso e apagar
+// durante a retransmissao (invertido do esperado), troque LOW<->HIGH abaixo.
+#define PIN_LED_TX     PB11
 // SCK=PA5, MISO=PA6, MOSI=PA7 -- ja sao os pinos default do SPI1, nao precisa
 // declarar, o SPI global do Arduino ja usa esses automaticamente.
 //
@@ -144,6 +150,18 @@ uint32_t getRebroadcastDelayMsec(float snr, uint32_t slotTimeMsec) {
 uint32_t slotTimeMsec;
 
 void setup() {
+    pinMode(PIN_LED_TX, OUTPUT);
+    // Teste de boot: pisca o LED 4 vezes logo ao ligar, independente da
+    // polaridade real da sua placa (LED ativo em LOW ou em HIGH -- ambos
+    // vao mostrar alguma piscada aqui). Se nada piscar, o pino PIN_LED_TX
+    // esta errado ou nao ha LED fisico nesse pino nesta placa.
+    for (uint8_t i = 0; i < 4; i++) {
+        digitalWrite(PIN_LED_TX, LOW);
+        delay(150);
+        digitalWrite(PIN_LED_TX, HIGH);
+        delay(150);
+    }
+    digitalWrite(PIN_LED_TX, LOW); // estado de repouso: apagado (economiza bateria)
     Serial1.begin(115200);
     delay(2000); // da tempo do adaptador USB-serial estabilizar
 
@@ -179,7 +197,7 @@ void setup() {
     } else {
         Serial1.print("Ouvindo em ");
         Serial1.print(FREQ_MHZ, 3);
-        Serial1.println(" MHz (LongFast / BR_ANZ)...");
+        Serial1.println(" MHz (LongFast / BR_902)...");
     }
 
     randomSeed(uid[0] ^ millis());
@@ -248,6 +266,7 @@ void loop() {
     memcpy(rxBuffer, &hdr, PACKET_HEADER_LEN);
 
     radio.standby();
+    digitalWrite(PIN_LED_TX, HIGH); // acende (retransmissao em andamento)
     int txState = radio.startTransmit(rxBuffer, len);
     if (txState != RADIOLIB_ERR_NONE) {
         Serial1.print("  -> ERRO ao iniciar transmissao, codigo: ");
@@ -274,5 +293,6 @@ void loop() {
     } else {
         Serial1.println("  -> ERRO: timeout esperando TX_DONE (2s)");
     }
+    digitalWrite(PIN_LED_TX, LOW); // apaga (volta ao repouso)
     radio.startReceive();
 }
