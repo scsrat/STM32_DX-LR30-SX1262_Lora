@@ -145,7 +145,7 @@ RX from=0xF993F6C4 to=0xFFFFFFFF id=0x5DBD48E6 hop=3/3 ch=0x8 snr=5.50 rssi=-24.
   -> retransmitindo em 28 ms
   -> retransmitido OK
 ```
-
+      
 **Erros comuns:**
 
 | Sintoma | Causa provável |
@@ -165,11 +165,6 @@ RX from=0xF993F6C4 to=0xFFFFFFFF id=0x5DBD48E6 hop=3/3 ch=0x8 snr=5.50 rssi=-24.
 - Biblioteca de rádio: [RadioLib](https://github.com/jgromes/RadioLib) (jgromes).
 - Manual do módulo: DX-LR20/LR30-900M22S Module Technical Manual, SHEN ZHEN DX-SMART
   TECHNOLOGY CO., LTD.
-
-## Licença
-
-Sem licença definida ainda — adicione uma (MIT é uma escolha comum e simples pra esse
-tipo de projeto) antes de publicar, se quiser deixar claro os termos de uso/modificação.
 
 ## Aviso legal
 
