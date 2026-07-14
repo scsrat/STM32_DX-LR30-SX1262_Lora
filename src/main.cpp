@@ -26,7 +26,7 @@
  *  - PRECISA que voce ajuste os pinos (NSS/RESET/BUSY/DIO1) abaixo para bater com
  *    a fiacao real do seu modulo DX-LR30 -- eu nao tenho o desenho exato do seu modulo.
  *
- * Parametros de radio abaixo calculados para regiao BR_902 (902.0-907.5 MHz) e
+ * Parametros de radio abaixo calculados para regiao BR/ANZ (919.875 MHz) e
  * canal publico padrao "LongFast". Se voce usa outra regiao/canal, ajuste FREQ_MHZ.
  */
 
