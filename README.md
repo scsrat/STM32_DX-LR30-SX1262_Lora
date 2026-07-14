@@ -96,7 +96,7 @@ Requer [PlatformIO](https://platformio.org/) (extensão do VS Code ou `pip insta
 git clone <este repo>
 cd <este repo>
 pio run              # compila e gera firmware.hex em .pio/build/bluepill_f103c8/
-pio run -t upload    # grava via ST-Link (padrao) -- veja platformio.ini para serial
+pio run -t upload    # grava via ST-Link (melhor MCUISP) -- veja platformio.ini para serial
 ```
 
 ### Gravando sem ST-Link (via adaptador USB-serial)
