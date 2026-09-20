@@ -131,6 +131,11 @@ static uint16_t PREAMBLE    = 16;
 static int8_t TX_POWER_DBM  = 20;
 ```
 
+## Contribuição
+Se você achar útil, ou for um visionario, me pague um café!🙏
+
+[![Buy Me A Coffee](https://camo.githubusercontent.com/9f44ce2dc3b3eecdd02598900866ffc518801df1932849703dae1e5ce5031070/68747470733a2f2f7777772e6275796d6561636f666665652e636f6d2f6173736574732f696d672f637573746f6d5f696d616765732f6f72616e67655f696d672e706e67)](https://www.buymeacoffee.com/scsrat)
+
 ## Diagnóstico
 
 Abra o monitor serial em 115200 baud (`pio device monitor -p COMx -b 115200`). Saída
